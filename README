@@ -1,0 +1,26 @@
+Instructions for calculating linker-mediated contact rates between organelles using Brownian Dynamics simulations
+## The accompanying code was developed by Saurabh S. Mogre and Elena F. Koslover
+## Contact smogre@ucsd.edu for queries regarding the code
+
+1) Simulating organelle movement
+-> The folder 'source' contains FORTRAN 90 source files required to generate the executable
+-> gfortran or equivalent FORTRAN 90 compiler is required to compile the files
+-> navigate to source/ and run the command make to compile.
+-> run the executable spheretouchBD.exe with a parameter file name as argument.
+
+
+Example parameter files are provided for the diffusive and tethered case. For example, the following command:
+
+./spheretouchBD.exe BDsim_3endo_5MT_diff
+
+ will run the simulation with 3 endosomes, 5 microtubule tracks, and a diffusive peroxisome.
+Parameters can be changed by editing the param.* file. Adjustable parameters are listed in source/readkey.f90. Documentation on the parameters and input formating will be provided upon request.
+
+-> The simulation will output a *.snap.out file containing all the positions and orientations of the involved organelles.
+
+2) Reading simulation data
+-> Run the script makeMatfromSnap.m in matlab to read in data from the *.snap.out file and extract positions and orientations to a .mat
+file
+
+3) Calculating linker contact rate
+-> run the script getContactRate.m to calculate the linker contact rate.

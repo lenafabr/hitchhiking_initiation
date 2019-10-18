@@ -1,0 +1,48 @@
+# what action to perform
+RNGSEED -2
+ACTION PARTINTERACT
+BDSTEPS 5D4
+BDPRINTEVERY 1D4
+
+# number of particles and their properties
+# total carrier + 1 hitchhiker
+NPART 4
+# number of microtubule tracks
+NTRACK 5
+# these particle indices are walking
+WALKINDS 1 2 3
+# this particle index is tethered, uncomment next line to simulate tethering
+TETHINDS 4
+# velocity of motile carrier, change T to F to only allow unidirectional motion
+VEL 2D0 T
+# spring constant for zero-length spring that attaches the carrier to the microtubule
+KSP 1D5
+# spring constant for tethering if they were tethered
+KTETH 1D5
+# constants for implementing steric repulsion
+KSTER 1D6
+KCONF 1D6
+
+#number of trials
+NTRIALS 100
+
+# steric radius of particles
+STERRAD 0.1D0
+
+# time step
+DELT 1D-4
+
+# set viscosity relevant for fungal hyphae
+# obtained by using diffusivity from Lin, Congping, et al.  Nat. comm. 7 (2016): 11814.
+VISCOSITY 3.872D1
+
+# domain radius
+DOMRAD 1D0
+# domain half-length (simulated length is 2x DOMLEN)
+DOMLEN 0.5D0 
+
+# distance of the attachment point of the motor from the carrier center (this is equal to the radius of the carrier) 
+ATTLEN 0.1D0
+
+# how often and where to save snapshots
+SNAPSHOTS 10 ./*.snap.out
